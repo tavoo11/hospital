@@ -1,0 +1,2 @@
+from .usuarioCrearVista import UsuarioCrearVista
+from .usuarioDetalleVista import UsuarioDetalleVista
