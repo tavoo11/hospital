@@ -20,7 +20,7 @@ class UsuarioSerializer(serializers.ModelSerializer):
     signosVitales = SignosVSerializer()
     class Meta:
         model = Usuario
-        field = ['idUsuario', 'email', 'nombres', 'apellidos', 'cedula', 'direccion', 'telefono', 'fechaNacimiento', 
+        fields = ['idUsuario', 'email', 'nombres', 'apellidos', 'cedula', 'direccion', 'telefono', 'fechaNacimiento', 
                 'auxiliar', 'famiPaciente', 'medico', 'paciente', 'signosVitales']
     
     def create(self, validated_date):

@@ -5,5 +5,5 @@ from rest_framework import serializers
 class AuxiliarSerializer(serializers.ModelSerializer):
     class Meta:
          model = Auxiliar
-         field = ['idAuxiliar', 'isActivo']
+         fields = ['idAuxiliar', 'isActivo']
     
