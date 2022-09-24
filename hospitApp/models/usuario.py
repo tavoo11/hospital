@@ -31,11 +31,12 @@ class UserManager(BaseUserManager):
 class Usuario (AbstractBaseUser):
     idUsuario = models.BigAutoField(primary_key=True)
     email = models.EmailField('correo electronico', unique= True,)
+    password = models.CharField('contraseña', max_length=100)
     nombres = models.CharField('nombres', max_length= 100)
     apellidos = models.CharField('apellidos', max_length= 200)
     cedula= models.FloatField('cedula de ciudadania', default=0)
-    direccion = models.CharField('direccion', max_length=200)
-    telefono = models.IntegerField('Numero celular',default=0)
+    direccion = models.CharField('direccion', max_length=200, null=True)
+    telefono = models.FloatField('Numero celular',default=0, null=True)
     fechaNacimiento = models.DateField('Fecha de nacimiento')
 
     def save(self, **kwargs):

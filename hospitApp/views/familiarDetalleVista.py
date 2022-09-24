@@ -4,12 +4,12 @@ from rest_framework.response import Response
 from rest_framework_simplejwt.backends import TokenBackend
 from rest_framework.permissions import IsAuthenticated
 
-from hospitApp.models.usuario import Usuario
-from hospitApp.serializers.usuarioSerializer import UsuarioSerializer
+from hospitApp.models.famiPacinete import FamiPaciente
+from hospitApp.serializers.famipaSerializer import FamipaSerializer
 
-class UsuarioDetalleVista (generics.RetrieveAPIView):
-    queryset = Usuario.objects.all()
-    serializer_class = UsuarioSerializer
+class FamiliarDetalleVista (generics.RetrieveAPIView):
+    queryset = FamiPaciente.objects.all()
+    serializer_class = FamipaSerializer
     permission_classes = (IsAuthenticated,)
 
     def get(self, request, *args, **kwargs):
