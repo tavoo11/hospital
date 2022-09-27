@@ -14,12 +14,12 @@ urlpatterns = [
     path('login/', TokenObtainPairView.as_view()),
     path('refresh/', TokenRefreshView.as_view()),
     path('paciente/', PacienteCrearVista.as_view()),
-    path('pacientedatos/<int:pk>/', PacienteDetalleVista.as_view()),
+    path('pacientedatos/<int:pk>/', PacienteDetalleVista.as_view(), name='datospaciente'),
     path('auxiliar/', AuxiliarCrearVista.as_view()),
-    path('auxiliardatos/<int:pk>/', AuxiliarDetalleVista.as_view()),
+    path('auxiliardatos/<int:pk>/', AuxiliarDetalleVista.as_view(), name='datosauxiliar'),
     path('familiar/', FamiliarCrearVista.as_view()),
-    path('familiardatos/<int:pk>/', FamiliarDetalleVista.as_view()),
+    path('familiardatos/<int:pk>/', FamiliarDetalleVista.as_view(), name='datosfamiliar'),
     path('medico/', MedicoCrearVista.as_view()),
-    path('medicodatos/<int:pk>/', MedicoDetalleVista.as_view()),
+    path('medicodatos/<int:pk>/', MedicoDetalleVista.as_view(), name='datosmedico'),
 ]
 

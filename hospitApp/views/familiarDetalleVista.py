@@ -14,13 +14,13 @@ class FamiliarDetalleVista (generics.RetrieveAPIView):
 
     def get(self, request, *args, **kwargs):
 
-        token = request.META.get('HTTP_AUTHORIZATION')[7:]
-        tokenBackend = TokenBackend(algorithm=settings.SIMPLE_JWT['ALGORITHM'])
-        valid_data = tokenBackend.decode(token, verify=False)
+        #token = request.META.get('HTTP_AUTHORIZATION')[7:]
+       # tokenBackend = TokenBackend(algorithm=settings.SIMPLE_JWT['ALGORITHM'])
+       # valid_data = tokenBackend.decode(token, verify=False)
 
 
-        if valid_data['usuario_idUsuario'] != kwargs['pk']:
-            stringResponse= {'detail': 'Solicitud no autorizada'}
-            return Response(stringResponse, status=status.HTTP_401_UNAUTHORIZED)
+        #if valid_data['usuario_idUsuario'] != kwargs['pk']:
+        #    stringResponse= {'detail': 'Solicitud no autorizada'}
+        #    return Response(stringResponse, status=status.HTTP_401_UNAUTHORIZED)
 
         return super().get(request, *args, **kwargs)
