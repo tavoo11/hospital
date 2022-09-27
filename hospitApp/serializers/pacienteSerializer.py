@@ -17,12 +17,12 @@ class PacienteSerializer (serializers.ModelSerializer):
         return userInstance
 
     def to_representation(self, obj):
-        usuario = Usuario.objects.get(id=obj.idUsuario)
-        paciente = Paciente.objects.get(id=obj.idPaciente)
+        usuario = Usuario.objects.get(idUsuario=obj.usuario.idUsuario)
+        paciente = Paciente.objects.get(idPaciente=obj.idPaciente)
 
         return {
             'usuario':{
-            'idUsuario': usuario.id,
+            'idUsuario': usuario.idUsuario,
             'email': usuario.email,
             'password': usuario.password,
             'nombres': usuario.nombres,
@@ -32,7 +32,7 @@ class PacienteSerializer (serializers.ModelSerializer):
             'telefono': usuario.telefono,
             'fechaNacimiento': usuario.fechaNacimiento,
             },
-            'idPaciente': paciente.id,
+            'idPaciente': paciente.idPaciente,
             'fechaIngreso': paciente.fechaIngreso,
             'fechaSalida': paciente.fechaSalida,
             'isActivo': paciente.isActivo,

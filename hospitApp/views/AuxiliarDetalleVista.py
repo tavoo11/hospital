@@ -3,9 +3,17 @@ from rest_framework import generics, status
 from rest_framework.response import Response
 from rest_framework_simplejwt.backends import TokenBackend
 from rest_framework.permissions import IsAuthenticated
+from rest_framework.viewsets import ViewSet
 
 from hospitApp.models.auxiliar import Auxiliar
 from hospitApp.serializers.auxiliarSerializer import AuxiliarSerializer
+
+class AuxiliarInfoView(ViewSet):
+    def list(self, request):
+        auxiliares = Auxiliar.objects.all()
+        serializer = AuxiliarSerializer(auxiliares, many=True)
+        return Response(serializer.data)
+
 
 class AuxiliarDetalleVista (generics.RetrieveAPIView):
     queryset = Auxiliar.objects.all()

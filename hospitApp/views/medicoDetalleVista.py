@@ -3,9 +3,19 @@ from rest_framework import generics, status
 from rest_framework.response import Response
 from rest_framework_simplejwt.backends import TokenBackend
 from rest_framework.permissions import IsAuthenticated
+from rest_framework.viewsets import ViewSet
 
 from hospitApp.models.medico import Medico
 from hospitApp.serializers.medicoSerializer import MedicoSerializer
+
+class MedicoInfoView(ViewSet):
+    def list(self, request):
+        medicos = Medico.objects.all()
+        serializer = MedicoSerializer(medicos, many=True)
+        return Response(serializer.data)
+
+
+
 
 class MedicoDetalleVista (generics.RetrieveAPIView):
     queryset = Medico.objects.all()

@@ -1,11 +1,19 @@
 from django.conf import settings
 from rest_framework import generics, status
-#from rest_framework.response import Response
+from rest_framework.viewsets import ViewSet
+from rest_framework.response import Response
 #from rest_framework_simplejwt.backends import TokenBackend
 #from rest_framework.permissions import IsAuthenticated
 
-#from hospitApp.models.paciente import Paciente
+from hospitApp.models.paciente import Paciente
 from hospitApp.serializers.pacienteSerializer import PacienteSerializer
+class PacienteInfoView(ViewSet):
+    def list(self, request):
+        pacientes = Paciente.objects.all()
+        serializer = PacienteSerializer(pacientes, many=True)
+        return Response(serializer.data)
+
+
 
 class PacienteDetalleVista (generics.RetrieveAPIView):
     serializer_class = PacienteSerializer

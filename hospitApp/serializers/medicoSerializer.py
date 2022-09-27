@@ -17,10 +17,10 @@ class MedicoSerializer(serializers.ModelSerializer):
          return userInstance
 
     def to_representation(self, obj):
-        usuario = Usuario.objects.get(id=obj.idUsuario)
-        medico = Medico.objects.get(id=obj.idMedico)
+        usuario = Usuario.objects.get(idUsuario=obj.usuario.idUsuario)
+        medico = Medico.objects.get(idMedico=obj.idMedico)
         return {
-            'idUsuario': usuario.id,
+            'idUsuario': usuario.idUsuario,
             'email': usuario.email,
             'password': usuario.password,
             'nombres': usuario.nombres,
@@ -30,7 +30,7 @@ class MedicoSerializer(serializers.ModelSerializer):
             'telefono': usuario.telefono,
             'fechaNacimiento': usuario.fechaNacimiento,
             'medico':{
-                'idMedico':medico.id,
+                'idMedico':medico.idMedico,
                 'isActivo': medico.isActivo
             }
         }

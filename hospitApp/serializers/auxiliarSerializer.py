@@ -19,11 +19,11 @@ class AuxiliarSerializer(serializers.ModelSerializer):
 
     
     def to_representation(self, obj):
-        usuario = Usuario.objects.get(id=obj.idUsuario)
-        auxiliar = Auxiliar.objects.get(id=obj.idAuxiliar)
+        usuario = Usuario.objects.get(idUsuario=obj.usuario.idUsuario)
+        auxiliar = Auxiliar.objects.get(idAuxiliar=obj.idAuxiliar)
 
         return  {
-            'idUsuario': usuario.id,
+            'idUsuario': usuario.idUsuario,
             'email': usuario.email,
             'password': usuario.password,
             'nombres': usuario.nombres,
@@ -33,7 +33,7 @@ class AuxiliarSerializer(serializers.ModelSerializer):
             'telefono': usuario.telefono,
             'fechaNacimiento': usuario.fechaNacimiento,
             'auxiliar':{
-                'idAuxiliar': auxiliar.id,
+                'idAuxiliar': auxiliar.idAuxiliar,
                 'isActivo': auxiliar.isActivo
             }
         }

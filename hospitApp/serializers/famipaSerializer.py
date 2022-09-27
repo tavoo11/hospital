@@ -17,10 +17,10 @@ class FamipaSerializer(serializers.ModelSerializer):
         return userInstance
 
     def to_representation(self, obj):
-        usuario = Usuario.objects.get(id=obj.idUsuario)
-        famiPaciente = FamiPaciente.objects.get(id=obj.idFamiliar)
+        usuario = Usuario.objects.get(idUsuario=obj.usuario.idUsuario)
+        famiPaciente = FamiPaciente.objects.get(idFamiliar=obj.idFamiliar)
         return {
-            'idUsuario': usuario.id,
+            'idUsuario': usuario.idUsuario,
             'email': usuario.email,
             'password': usuario.password,
             'nombres': usuario.nombres,
@@ -30,7 +30,7 @@ class FamipaSerializer(serializers.ModelSerializer):
             'telefono': usuario.telefono,
             'fechaNacimiento': usuario.fechaNacimiento,
             'famiPaciente':{
-                'idFamiliar': famiPaciente.id,
+                'idFamiliar': famiPaciente.idFamiliar,
                 'isActivo': famiPaciente.isActivo
             }
         }

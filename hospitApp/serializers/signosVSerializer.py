@@ -17,11 +17,11 @@ class SignosVSerializer(serializers.ModelSerializer):
         return userInstance
 
     def to_representation(self, obj):
-        usuario = Usuario.objects.get(id=obj.idUsuario)
-        signosvitales = SignosVitales.objects.get(id=obj.idSignos)
+        usuario = Usuario.objects.get(idUsuario=obj.usuario.idUsuario)
+        signosvitales = SignosVitales.objects.get(idSignos=obj.idSignos)
 
         return {
-            'idUsuario': usuario.id,
+            'idUsuario': usuario.idUsuario,
             'email': usuario.email,
             'password': usuario.password,
             'nombres': usuario.nombres,
@@ -31,7 +31,7 @@ class SignosVSerializer(serializers.ModelSerializer):
             'telefono': usuario.telefono,
             'fechaNacimiento': usuario.fechaNacimiento,
             'signosVitales': {
-                'idSignos': signosvitales.id,
+                'idSignos': signosvitales.idSignos,
                 'presionArterial': signosvitales.presionArterial,
                 'temperatura': signosvitales.temperatura,
                 'frecuenciaCardiaca': signosvitales.frecuenciaCardiaca,

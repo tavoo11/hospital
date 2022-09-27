@@ -3,9 +3,20 @@ from rest_framework import generics, status
 from rest_framework.response import Response
 from rest_framework_simplejwt.backends import TokenBackend
 from rest_framework.permissions import IsAuthenticated
+from rest_framework.viewsets import ViewSet
 
 from hospitApp.models.famiPacinete import FamiPaciente
 from hospitApp.serializers.famipaSerializer import FamipaSerializer
+
+class FamiliaresInfoView(ViewSet):
+    def list(self, request):
+        familiares = FamiPaciente.objects.all()
+        serializer = FamipaSerializer(familiares, many=True)
+        return Response(serializer.data)
+
+
+
+
 
 class FamiliarDetalleVista (generics.RetrieveAPIView):
     queryset = FamiPaciente.objects.all()
