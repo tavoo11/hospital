@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'hospitApp',
     'corsheaders',
+    "whitenoise.runserver_nostatic",
+    "django.contrib.staticfiles",
 ]
 
 SIMPLE_JWT = {
@@ -67,6 +69,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     "corsheaders.middleware.CorsMiddleware",
+    "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
 ]
 
 REST_FRAMEWORK = {
@@ -159,3 +163,12 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 import django_heroku
 django_heroku.settings(locals())
+import os
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  
+STATIC_URL = '/static/'
+# Extra places for collectstatic to find static files.
+STATICFILES_DIRS = (  
+    os.path.join(BASE_DIR, 'static'),
+)
+
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
