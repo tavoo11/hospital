@@ -9,6 +9,7 @@ class PacienteCrearVista(views.APIView):
     #serializer_class = PacienteSerializer
     #queryset = PacienteSerializer.Meta.model.objects.filter()
     def post(self, request, *args, **kwargs):
+        print(request.data)
         serializer = PacienteSerializer(data=request.data)
         serializer.is_valid(raise_exception =True)
         serializer.save()
